@@ -1,13 +1,28 @@
 const item = document.querySelector("#item");
-const toDoBox = document.querySelector("todo-box");
+const toDoBox = document.querySelector("#todo-box");
+const clear=document.querySelector("#clear");
 item.addEventListener("keyup", function (event) {
   if (event.key == "Enter") {
+    console.log(event.key);
     addToDo(this.value);
     this.value = "";
   }
 });
+//  delete all function
+clear.addEventListener("click",function(){
+const toDoBox = document.querySelector("#todo-box");
+const oldList = toDoBox.childNodes;
+toDoBox.remove(oldList);
+})
+
+
 const addToDo = (item) => {
   const listItem = document.createElement("li");
   listItem.innerHTML = `${item}`;
+  listItem.addEventListener("click",
+   function () {
+    this.classList.toggle("done");
+  }
+  );
   toDoBox.appendChild(listItem);
 }
