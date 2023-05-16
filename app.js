@@ -18,11 +18,14 @@ toDoBox.remove(oldList);
 
 const addToDo = (item) => {
   const listItem = document.createElement("li");
-  listItem.innerHTML = `${item}`;
+  listItem.innerHTML = `${item}<i class="fa-solid fa-xmark"></i>`;
   listItem.addEventListener("click",
    function () {
     this.classList.toggle("done");
   }
-  );
+  )
+  listItem.querySelector("i").addEventListener("click",function(){
+    listItem.remove();
+  })
   toDoBox.appendChild(listItem);
 }
