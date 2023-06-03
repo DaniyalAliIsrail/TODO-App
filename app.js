@@ -4,8 +4,13 @@ const clear=document.querySelector("#clear");
 item.addEventListener("keyup", function (event) {
   if (event.key == "Enter") {
     console.log(event.key);
-    addToDo(this.value);
-    this.value = "";
+    if(this.value==""){
+      alert("please Enter task")
+    }else{
+      addToDo(this.value);
+      this.value = "";
+    }
+
   }
 });
 //  delete all function
